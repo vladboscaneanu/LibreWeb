@@ -1,0 +1,10 @@
+* .pyc
+__pycache__
+myvenv
+.idea
+db.sqlite3
+Help.odt
+LibreWeb.odt
+To Do list.odt
+desktop.ini
+Licenza.odt
