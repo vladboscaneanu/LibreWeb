@@ -15,9 +15,7 @@ import webbrowser
 # LibreOffice modules
 import uno
 import unohelper
-# from html.parser import HTMLParser
 from com.sun.star.awt import XActionListener
-# from com.sun.star.awt.PosSize import SIZE, POSSIZE
 
 # LibreWeb modules
 
