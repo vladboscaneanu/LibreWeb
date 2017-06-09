@@ -14,3 +14,14 @@ save_file_name = "libreweb.data"
 save_dir_name = "LibreWebSettings"
 # collected data for listeners
 _collected_items = []
+# collection of update sites
+update_source = (
+    ("https://extensions.libreoffice.org/extensions/libreweb", "span"),
+    ("https://github.com/vladboscaneanu/LibreWeb", "a")
+)
+# libreweb.settings
+settings_file = "libreweb.settings"
+# last update key
+last_update_key = "LAST_UPDATE_VERIFY"
+# check update period
+check_update_period= 7

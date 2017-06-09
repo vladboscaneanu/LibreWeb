@@ -1,11 +1,15 @@
-import uno
+# import uno
 
 ctx = XSCRIPTCONTEXT.getComponentContext()
 desktop = XSCRIPTCONTEXT.getDesktop()
 document = XSCRIPTCONTEXT.getDocument()
 from messagebox import MsgBox
+from tools import do_update
 
 msg_box = MsgBox(desktop)
+
+# Check for an eventual update
+do_update(ctx, msg_box)
 
 
 def Settings(*args):
@@ -38,7 +42,7 @@ def Settings(*args):
         TagCount_control, ResultLabel_control
     ))
     SaveButton_control.addActionListener(SaveButtonListener(
-        msg_box, get_save_file(ctx), document,
+        msg_box, get_save_file(ctx, msg_box), document,
         ColumnListBox_control, RowListBox_control,
         TagCount_control, ElementToSearch_control,
         URLTextBox_control, DataTypeListBox_control
@@ -67,7 +71,7 @@ def Settings(*args):
 
 def Start_Service(*args):
     from tools import get_save_file, start_service
-    save_file = get_save_file(ctx)
+    save_file = get_save_file(ctx, msg_box)
     start_service(save_file, document, msg_box)
 
 
@@ -75,6 +79,34 @@ def Get_Support(*args):
     import webbrowser
     from settings import support_forum
     webbrowser.open(support_forum)
+
+
+def Check_SSL(*args):
+    '''A function that tries to import ssl module,
+        shows error on ImportError'''
+    try:
+        import ssl
+        msg_box.show("SSL module is imported successful.", "Message", 3)
+    except ImportError:
+        msg_box.show("It seems ssl module is broken!", "Attention", 2)
+
+
+def Import_Web_Settings(*args):
+    from importexport import ImportWebData
+    from tools import get_save_file
+    to_file = get_save_file(ctx, msg_box)
+    if to_file:
+        to_file_instance = ImportWebData(ctx, msg_box, to_file)
+        to_file_instance.import_web_data()
+
+
+def Test_Function(*args):
+    from importexport import ExportWebData
+    from tools import get_save_file
+    move_from = get_save_file(ctx, msg_box)
+    if move_from:
+        move_from_instance = ExportWebData(ctx,msg_box,move_from)
+        move_from_instance.export_web_data()
 
 
 # End of script

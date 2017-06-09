@@ -51,13 +51,6 @@ class SaveButtonListener(unohelper.Base, XActionListener):
     def actionPerformed(self, event):
         # Check if file for save data exists,otherwise let's create
 
-        if not os.path.isfile(self.sv_file):
-            try:
-                self.save_ins.save({})
-            except OSError as error:
-                if error.errno == 13:
-                    self.msg_box.show("You have no rights to create the save file",
-                                      "Attention", 2)
         if os.path.isfile(self.sv_file):
             try:
                 if self.ColumnListBox_ctrl.getSelectedItemPos() == -1:
@@ -134,6 +127,6 @@ class CheckURLListener(unohelper.Base, XActionListener):
                     self.TagCount_ctrl.setEnable(True)
         else:
             self.msg_box.show("Not supported tag!", "Attention!", 2)
-
+        self.msg_box.show("Operation completed.", "Message",1)
     def disposing(self, event):
         pass
