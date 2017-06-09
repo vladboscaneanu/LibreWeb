@@ -56,6 +56,9 @@ class ExportWebData:
                     if answer:
                         copy(self.move_from, folder_url)
                         self.msg_box.show("Web settings exported successfully", "Message", 1)
+                else:
+                    copy(self.move_from, folder_url)
+                    self.msg_box.show("Web settings exported successfully", "Message", 1)
             except OSError as error:
                 if error.errno == 13:
                     self.msg_box.show("You have no rights to save here file ",

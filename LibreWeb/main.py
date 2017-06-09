@@ -3,7 +3,7 @@
 ctx = XSCRIPTCONTEXT.getComponentContext()
 desktop = XSCRIPTCONTEXT.getDesktop()
 document = XSCRIPTCONTEXT.getDocument()
-from messagebox import MsgBox
+from messagebox import MsgBox,INFOBOX,WARNINGBOX,QUERYBOX
 from tools import do_update
 
 msg_box = MsgBox(desktop)
@@ -86,9 +86,9 @@ def Check_SSL(*args):
         shows error on ImportError'''
     try:
         import ssl
-        msg_box.show("SSL module is imported successful.", "Message", 3)
+        msg_box.show("It seems SSL module works", "Message", INFOBOX)
     except ImportError:
-        msg_box.show("It seems ssl module is broken!", "Attention", 2)
+        msg_box.show("It seems SSL module is broken!", "Attention", WARNINGBOX)
 
 
 def Import_Web_Settings(*args):
@@ -105,8 +105,20 @@ def Export_Web_Settings(*args):
     from tools import get_save_file
     move_from = get_save_file(ctx, msg_box)
     if move_from:
-        move_from_instance = ExportWebData(ctx,msg_box,move_from)
+        move_from_instance = ExportWebData(ctx, msg_box, move_from)
         move_from_instance.export_web_data()
 
+
+def Verify_Update(*args):
+    from tools import _verify_update
+    if not (_verify_update(ctx, msg_box)):
+        msg_box.show("No update available","Message",INFOBOX)
+
+
+def About(*args):
+    from tools import get_cur_version
+    current_version = get_cur_version(ctx)
+    msg_box.show("An internet tool for LibreOffice.\n" +
+                 "Current version :" + current_version, "LibreWeb", INFOBOX)
 
 # End of script

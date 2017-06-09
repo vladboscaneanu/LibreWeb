@@ -169,7 +169,8 @@ def _verify_update(ctx, msg_box):
                                 "Version " + online_version[0] + " is available", QUERYBOX, BUTTONS_OK_CANCEL) == OK:
             import webbrowser
             webbrowser.open(online_version[1])
-
+    else:
+        return False
 
 def do_update(ctx, msg_box):
     '''Function that check date of last update,if greater than
