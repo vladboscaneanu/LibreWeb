@@ -100,7 +100,7 @@ def Import_Web_Settings(*args):
         to_file_instance.import_web_data()
 
 
-def Test_Function(*args):
+def Export_Web_Settings(*args):
     from importexport import ExportWebData
     from tools import get_save_file
     move_from = get_save_file(ctx, msg_box)
