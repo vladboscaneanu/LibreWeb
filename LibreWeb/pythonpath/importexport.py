@@ -22,14 +22,14 @@ class ImportWebData:
             file_url = fileUrlToSystemPath(file[0])
             try:
                 if os.path.isfile(self.destination):
-                    answer = self.msg_box.show("The file exists, replace?", "Warning", WARNINGBOX,BUTTONS_OK_CANCEL)
+                    answer = self.msg_box.show("The file exists, replace?", "Warning", WARNINGBOX, BUTTONS_OK_CANCEL)
                     if answer:
                         copyfile(file_url, self.destination)
                         self.msg_box.show("Web settings imported successfully", "Message", INFOBOX)
             except OSError as error:
                 if error.errno == 13:
                     self.msg_box.show("You have no rights to create settings file",
-                                      "Attention",WARNINGBOX)
+                                      "Attention", WARNINGBOX)
 
 
 class ExportWebData:
@@ -49,12 +49,12 @@ class ExportWebData:
             import os.path
             from unohelper import fileUrlToSystemPath
             from settings import save_file_name
-            from messagebox import BUTTONS_OK_CANCEL,WARNINGBOX,INFOBOX
+            from messagebox import BUTTONS_OK_CANCEL, WARNINGBOX, INFOBOX
             folder_url = fileUrlToSystemPath(folder)
             file = os.path.join(folder_url, save_file_name)
             try:
                 if os.path.isfile(file):
-                    answer = self.msg_box.show("The file exists, replace?", "Warning", WARNINGBOX,BUTTONS_OK_CANCEL)
+                    answer = self.msg_box.show("The file exists, replace?", "Warning", WARNINGBOX, BUTTONS_OK_CANCEL)
                     if answer:
                         copy(self.move_from, folder_url)
                         self.msg_box.show("Web settings exported successfully", "Message", INFOBOX)
