@@ -114,6 +114,10 @@ def Verify_Update(*args):
     if not (_verify_update(ctx, msg_box)):
         msg_box.show("No update available","Message",INFOBOX)
 
+def Download_Help_File(*args):
+    from settings import url_help_file
+    import webbrowser
+    webbrowser.open(url_help_file)
 
 def About(*args):
     from tools import get_cur_version

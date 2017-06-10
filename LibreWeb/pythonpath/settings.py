@@ -25,3 +25,5 @@ settings_file = "libreweb.settings"
 last_update_key = "LAST_UPDATE_VERIFY"
 # check update period
 check_update_period= 7
+#url of help file
+url_help_file="https://github.com/vladboscaneanu/LibreWeb"
