@@ -123,6 +123,6 @@ def About(*args):
     from tools import get_cur_version
     current_version = get_cur_version(ctx)
     msg_box.show("An internet tool for LibreOffice.\n" +
-                 "Current version :" + current_version, "LibreWeb", INFOBOX)
+                 "Current version : " + current_version, "LibreWeb", INFOBOX)
 
 # End of script
