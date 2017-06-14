@@ -163,7 +163,7 @@ def _verify_update(ctx, msg_box):
 
     online_version = get_online_version()
     cur_version = get_cur_version(ctx)
-    if online_version[0] > cur_version:
+    if online_version and online_version[0] > cur_version:
         if msg_box.show(
                 "Would you like to download it?",
                                 "Version " + online_version[0] + " is available", QUERYBOX, BUTTONS_OK_CANCEL) == OK:
