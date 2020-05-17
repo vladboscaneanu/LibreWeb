@@ -2,10 +2,14 @@
 __pycache__
 myvenv
 .idea
+.git
 db.sqlite3
-Help.odt
 LibreWeb.odt
 To Do list.odt
 desktop.ini
 Licenza.odt
 .gitignore
+Project's structure.odt
+Test document.ods
+.~lock.Test document.ods#
+Tools
